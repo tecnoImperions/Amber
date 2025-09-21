@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "codigo": "AN-PL-001",
+    "nombre": "Anillo de Plata con Circonita",
+    "precio": 280,
+    "moneda": "Bs",
+    "imagen": "joyas/anillos/AN-PL-001.png",
+    "categoria": "Anillos",
+    "material": "Plata",
+    "descripcion": "Elegante anillo de plata 925 con circonita brillante ideal para ocasiones especiales."
+  },
+  {
+    "id": 2,
+    "codigo": "PE-OR-001",
+    "nombre": "Pendientes de Oro Rosa",
+    "precio": 550,
+    "moneda": "Bs",
+    "imagen": "joyas/pendientes/PE-OR-001.png",
+    "categoria": "Pendientes",
+    "material": "Oro",
+    "descripcion": "Hermosos pendientes de oro rosa con diseño moderno y sofisticado."
+  },
+  {
+    "id": 3,
+    "codigo": "CA-OR-001",
+    "nombre": "Cadena Clásica de Oro Amarillo",
+    "precio": 1200,
+    "moneda": "Bs",
+    "imagen": "joyas/cadenas/CA-OR-001.png",
+    "categoria": "Cadenas",
+    "material": "Oro",
+    "descripcion": "Cadena clásica de oro amarillo 18k, un accesorio atemporal para cualquier ocasión."
+  },
+  {
+    "id": 4,
+    "codigo": "CO-PL-001",
+    "nombre": "Colgante de Plata con Perla",
+    "precio": 430,
+    "moneda": "Bs",
+    "imagen": "joyas/colgantes/CO-PL-001.png",
+    "categoria": "Colgantes",
+    "material": "Plata",
+    "descripcion": "Delicado colgante de plata con perla natural, símbolo de elegancia y pureza."
+  },
+  {
+    "id": 5,
+    "codigo": "AN-OR-002",
+    "nombre": "Anillo de Oro Blanco con Diamante",
+    "precio": 4500,
+    "moneda": "Bs",
+    "imagen": "joyas/anillos/AN-OR-002.png",
+    "categoria": "Anillos",
+    "material": "Oro Blanco",
+    "descripcion": "Exclusivo anillo de oro blanco 18k con diamante central, ideal para compromiso."
+  }
+]

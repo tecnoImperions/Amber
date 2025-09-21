@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#003087" id="theme-color"/>
+  <title>Amber | Joyería</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primario: #003087; /* Azul PayPal original */
+      --secundario: #0070ba;
+      --dorado: #ffb81c;  /* Amarillo original */
+      --dorado-claro: #ffd166;
+      --fondo: #f8f9fa;
+      --texto: #333;
+      --blanco: #ffffff;
+      --gris-claro: #e9ecef;
+      --sombra: 0 2px 15px rgba(0, 48, 135, 0.1);
+      --sombra-hover: 0 8px 25px rgba(0, 48, 135, 0.15);
+      --transicion: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* Navbar mejorado */
+    .navbar {
+      background: linear-gradient(135deg, var(--primario) 0%, var(--secundario) 100%) !important;
+      box-shadow: var(--sombra);
+      backdrop-filter: blur(10px);
+      transition: var(--transicion);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: white !important;
+      font-size: 1.5rem;
+      transition: var(--transicion);
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .navbar-brand i {
+      color: var(--dorado);
+      margin-right: 8px;
+      filter: drop-shadow(0 0 5px rgba(255, 184, 28, 0.3));
+    }
+
+    .navbar .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      transition: var(--transicion);
+      position: relative;
+    }
+
+    .navbar .nav-link:hover {
+      color: var(--dorado) !important;
+    }
+
+
+
+    /* Dark mode button mejorado */
+    #btnDark {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      transition: var(--transicion);
+    }
+
+    #btnDark:hover {
+      background: var(--dorado);
+      color: var(--primario) !important;
+      transform: translateY(-1px);
+      border-color: var(--dorado);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 4px 8px;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+
+    /* Dropdowns mejorados */
+    .dropdown-menu {
+      background: var(--blanco);
+      border: none;
+      border-radius: 12px;
+      box-shadow: var(--sombra);
+      padding: 0.5rem;
+      animation: fadeInUp 0.2s ease;
+    }
+
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: 500;
+      transition: var(--transicion);
+      margin: 2px 0;
+    }
+
+    .dropdown-item:hover {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      color: var(--primario);
+      transform: translateX(3px);
+    }
+
+    .dropdown-item i {
+      width: 16px;
+      margin-right: 8px;
+    }
+
+    /* Buscador con lupa */
+    .search-container {
+      position: relative;
+      min-width: 280px;
+    }
+
+    #buscador {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 8px 16px 8px 40px;
+      background: rgba(255, 255, 255, 0.9);
+      transition: var(--transicion);
+      font-weight: 500;
+      width: 100%;
+    }
+
+    #buscador:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 0.2rem rgba(255, 184, 28, 0.25);
+      background: var(--blanco);
+    }
+
+    #buscador::placeholder {
+      color: #6c757d;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+      z-index: 2;
+    }
+
+    #buscador:focus + .search-icon {
+      color: var(--dorado);
+    }
+
+    /* Título hero */
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--primario), var(--dorado));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    /* Loader más rápido */
+    #loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+      flex-direction: column;
+    }
+
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--gris-claro);
+      border-top: 3px solid var(--dorado);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .loader-text {
+      margin-top: 1rem;
+      color: var(--primario);
+      font-weight: 500;
+    }
+
+    /* Cards de productos mejorados */
+    .producto .card {
+      border: none;
+      border-radius: 15px;
+      background: var(--blanco);
+      box-shadow: var(--sombra);
+      transition: var(--transicion);
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .producto .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .producto .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primario), var(--dorado));
+      transform: scaleX(0);
+      transition: var(--transicion);
+      z-index: 1;
+    }
+
+    .producto .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .producto img {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      cursor: pointer;
+      transition: var(--transicion);
+    }
+
+    .producto .card:hover img {
+      transform: scale(1.03);
+    }
+
+    .card-title {
+      font-weight: 600;
+      color: var(--primario);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .precio {
+      color: var(--dorado);
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Botones mejorados */
+    .btn-group {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .btn {
+      border-radius: 20px;
+      font-weight: 500;
+      padding: 8px 16px;
+      transition: var(--transicion);
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+      background: linear-gradient(135deg, var(--secundario), var(--primario));
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #25d366, #20ba5a);
+      border: none;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    /* Modal mejorado */
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    #modalImagen {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 12px;
+      max-height: 300px;
+    }
+
+    #modalPrecio {
+      color: var(--dorado);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    #modalNombre {
+      color: var(--dorado);
+      font-weight: 600;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    /* Footer mejorado */
+    footer {
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: white;
+      margin-top: 3rem;
+      padding: 1.5rem 0;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+    }
+
+    footer a {
+      color: var(--dorado) !important;
+      text-decoration: none;
+      transition: var(--transicion);
+    }
+
+    footer a:hover {
+      color: var(--dorado-claro) !important;
+      text-shadow: 0 0 8px rgba(255, 184, 28, 0.5);
+    }
+
+    /* Mensaje vacío mejorado */
+    #mensaje-vacio {
+      padding: 3rem 1rem;
+    }
+
+    #mensaje-vacio i {
+      font-size: 4rem;
+      color: var(--gris-claro);
+      margin-bottom: 1rem;
+    }
+
+    /* Dark mode completo */
+    body.dark {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      color: #e4e6eb;
+    }
+
+    .navbar.dark-mode {
+      background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
+    }
+
+    body.dark .card {
+      background: #1e1e2e;
+      color: #e4e6eb;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark .card-title {
+      color: var(--dorado) !important;
+    }
+
+    body.dark .dropdown-menu {
+      background: #1e1e2e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e4e6eb;
+    }
+
+    body.dark .dropdown-item {
+      color: #e4e6eb;
+    }
+
+    body.dark .dropdown-item:hover {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      color: var(--primario);
+    }
+
+    body.dark #buscador {
+      background: #2a2a3e;
+      color: #e4e6eb;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark #buscador:focus {
+      background: #333344;
+      border-color: var(--dorado);
+    }
+
+    body.dark #buscador::placeholder {
+      color: #999;
+    }
+
+    body.dark .search-icon {
+      color: #999;
+    }
+
+    body.dark #buscador:focus + .search-icon {
+      color: var(--dorado);
+    }
+
+    body.dark .modal-content {
+      background: #1e1e2e;
+      color: #e4e6eb;
+    }
+
+    body.dark .text-muted {
+      color: #aaa !important;
+    }
+
+    body.dark .hero-title {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    /* Responsive mejorado */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .btn-group {
+        gap: 0.3rem;
+      }
+      
+      .btn {
+        font-size: 0.85rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      
+      .modal-body {
+        padding: 1.5rem;
+      }
+
+      /* Buscador móvil */
+      .search-container {
+        min-width: 200px;
+        order: -1;
+        margin-right: 10px;
+      }
+
+      /* Dark mode button móvil */
+      #btnDark {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Performance optimizations */
+    .producto img {
+      will-change: transform;
+    }
+
+    .card {
+      will-change: transform;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="bi bi-gem"></i> Amber</a>
+      
+      <!-- Botón dark mode y hamburguesa en móvil -->
+      <div class="d-flex align-items-center">
+        <button id="btnDark" class="btn btn-sm text-white me-2" title="Cambiar tema">
+          <i class="bi bi-moon me-1"></i><span class="d-none d-sm-inline">Oscuro</span>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Categorías -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-grid-3x3-gap me-1"></i>Categorías
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item filtro-categoria" data-cat="Todas">
+                <i class="bi bi-collection"></i>Todas
+              </a></li>
+              <li><a class="dropdown-item filtro-categoria" data-cat="Anillos">
+                <i class="bi bi-circle"></i>Anillos
+              </a></li>
+              <li><a class="dropdown-item filtro-categoria" data-cat="Cadenas">
+                <i class="bi bi-link-45deg"></i>Cadenas
+              </a></li>
+              <li><a class="dropdown-item filtro-categoria" data-cat="Colgantes">
+                <i class="bi bi-heart"></i>Colgantes
+              </a></li>
+              <li><a class="dropdown-item filtro-categoria" data-cat="Pendientes">
+                <i class="bi bi-earrings"></i>Pendientes
+              </a></li>
+            </ul>
+          </li>
+          <!-- Materiales -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-stars me-1"></i>Materiales
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item filtro-material" data-mat="Todos">
+                <i class="bi bi-palette"></i>Todos
+              </a></li>
+              <li><a class="dropdown-item filtro-material" data-mat="Oro">
+                <i class="bi bi-sun"></i>Oro
+              </a></li>
+              <li><a class="dropdown-item filtro-material" data-mat="Plata">
+                <i class="bi bi-moon"></i>Plata
+              </a></li>
+              <li><a class="dropdown-item filtro-material" data-mat="Oro Blanco">
+                <i class="bi bi-snow"></i>Oro Blanco
+              </a></li>
+            </ul>
+          </li>
+          <!-- Vistas -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-layout-three-columns me-1"></i>Vista
+            </a>
+            <ul class="dropdown-menu">
+              <li class="d-none d-lg-block"><a class="dropdown-item vista" data-cols="4">
+                <i class="bi bi-grid-3x3"></i>4 columnas
+              </a></li>
+              <li class="d-none d-lg-block"><a class="dropdown-item vista" data-cols="3">
+                <i class="bi bi-grid-3x2"></i>3 columnas
+              </a></li>
+              <li class="d-lg-none"><a class="dropdown-item vista" data-cols="2">
+                <i class="bi bi-grid"></i>2 columnas
+              </a></li>
+              <li class="d-lg-none"><a class="dropdown-item vista" data-cols="1">
+                <i class="bi bi-list"></i>1 columna
+              </a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Buscador con lupa -->
+        <div class="search-container">
+          <input id="buscador" class="form-control" type="search" placeholder="Buscar joya..." autocomplete="off">
+          <i class="bi bi-search search-icon"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container my-4">
+    <h2 class="hero-title">✨ Nuestras Joyas ✨</h2>
+    
+    <!-- Loader -->
+    <div id="loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Cargando joyas...</div>
+    </div>
+    
+    <!-- Grid de productos -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" id="contenedor-productos" style="display:none;"></div>
+    
+    <!-- Mensaje cuando no hay productos -->
+    <div id="mensaje-vacio" class="text-center" style="display:none;">
+      <i class="bi bi-search"></i>
+      <h4 class="text-muted">No encontramos esa joya</h4>
+      <p class="text-muted">Pronto tendremos más piezas disponibles ✨</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p class="mb-2">&copy; 2025 Amber Joyería | Todos los derechos reservados</p>
+      <p class="mb-0">
+        <i class="bi bi-geo-alt"></i> Santa Cruz, Bolivia | 
+        <i class="bi bi-telephone"></i> +591 70000000 | 
+        <i class="bi bi-whatsapp"></i> <a href="https://wa.me/59163488086">WhatsApp</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal Producto -->
+  <div class="modal fade" id="modalProducto" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <img id="modalImagen" src="" class="img-fluid mb-3" alt="">
+          <h5 id="modalNombre"></h5>
+          <p id="modalDescripcion" class="text-muted"></p>
+          <p id="modalPrecio">🇧🇴 <span></span> Bs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    let productos = [];
+    let columnas = 3;
+
+    // Dark mode toggle mejorado
+    const btnDark = document.getElementById('btnDark');
+    const isDarkStored = localStorage.getItem('darkMode') === 'true';
+    
+    // Aplicar tema guardado al cargar
+    if (isDarkStored) {
+      document.body.classList.add('dark');
+      document.querySelector('.navbar').classList.add('dark-mode');
+      btnDark.innerHTML = '<i class="bi bi-sun me-1"></i><span class="d-none d-sm-inline">Claro</span>';
+    }
+    
+    btnDark.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      document.querySelector('.navbar').classList.toggle('dark-mode');
+      
+      // Guardar preferencia
+      localStorage.setItem('darkMode', isDark);
+      
+      // Cambiar texto e icono
+      if (isDark) {
+        btnDark.innerHTML = '<i class="bi bi-sun me-1"></i><span class="d-none d-sm-inline">Claro</span>';
+      } else {
+        btnDark.innerHTML = '<i class="bi bi-moon me-1"></i><span class="d-none d-sm-inline">Oscuro</span>';
+      }
+    });
+
+    // Cargar productos con loader más rápido
+    fetch('productos.json')
+      .then(res => res.json())
+      .then(data => {
+        productos = data;
+        setTimeout(() => {
+          document.getElementById('loader').style.display = 'none';
+          document.getElementById('contenedor-productos').style.display = 'flex';
+          mostrarProductos(data);
+        }, 800); // Reduced from 1000ms
+      })
+      .catch(error => {
+        console.error('Error cargando productos:', error);
+        document.getElementById('loader').innerHTML = '<p class="text-danger">Error cargando productos</p>';
+      });
+
+    function mostrarProductos(lista) {
+      const contenedor = document.getElementById('contenedor-productos');
+      contenedor.innerHTML = "";
+      
+      if(lista.length === 0) {
+        document.getElementById('mensaje-vacio').style.display = 'block';
+        return;
+      } else {
+        document.getElementById('mensaje-vacio').style.display = 'none';
+      }
+
+      lista.forEach((p, index) => {
+        const div = document.createElement('div');
+        div.className = `col mb-4 producto fade-in`;
+        div.style.animationDelay = `${index * 0.05}s`; // Faster stagger
+        div.innerHTML = `
+          <div class="card h-100 text-center">
+            <img src="${p.imagen}" class="card-img-top" alt="${p.nombre}" 
+                 data-nombre="${p.nombre}" 
+                 data-descripcion="${p.descripcion}" 
+                 data-precio="${p.precio}" 
+                 data-imagen="${p.imagen}"
+                 loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${p.nombre}</h5>
+              <p class="card-text text-muted small flex-grow-1">${p.descripcion}</p>
+              <p class="precio">🇧🇴 ${p.precio} ${p.moneda}</p>
+              <div class="btn-group">
+                <a href="producto.html?id=${p.id}" class="btn btn-primary btn-sm">
+                  <i class="bi bi-eye"></i> Ver
+                </a>
+                <a href="https://wa.me/59163488086?text=*SOLICITUD DE JOYA - AMBER JOYERÍA* 💎%0A%0A📋 *DATOS DEL PRODUCTO:*%0A• Nombre: ${p.nombre}%0A• Código: ${p.codigo}%0A• Precio: ${p.precio} Bs%0A• Material: ${p.material}%0A%0A🛍️ *SOLICITO:*%0A• Información adicional%0A• Disponibilidad%0A• Formas de pago%0A%0A📍 *UBICACIÓN:* Santa Cruz, Bolivia%0A%0AEspero su pronta respuesta. ¡Gracias!" 
+                   class="btn btn-success btn-sm" target="_blank">
+                  <i class="bi bi-whatsapp"></i> Pedir
+                </a>
+              </div>
+            </div>
+          </div>`;
+        contenedor.appendChild(div);
+      });
+
+      // Eventos para modal en imágenes
+      document.querySelectorAll('.producto img').forEach(img => {
+        img.addEventListener('click', () => abrirModal(img));
+      });
+    }
+
+    // Función optimizada para abrir modal
+    function abrirModal(elemento) {
+      const card = elemento.closest('.producto');
+      const img = card.querySelector('img');
+      
+      document.getElementById('modalImagen').src = img.dataset.imagen;
+      document.getElementById('modalNombre').textContent = img.dataset.nombre;
+      document.getElementById('modalDescripcion').textContent = img.dataset.descripcion;
+      document.querySelector('#modalPrecio span').textContent = img.dataset.precio;
+      
+      new bootstrap.Modal(document.getElementById('modalProducto')).show();
+    }
+
+    // Buscador con debounce optimizado
+    let searchTimeout;
+    document.getElementById('buscador').addEventListener('input', e => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const term = e.target.value.toLowerCase();
+        const filtrados = productos.filter(p => 
+          p.nombre.toLowerCase().includes(term) ||
+          p.codigo.toLowerCase().includes(term) ||
+          p.categoria.toLowerCase().includes(term) ||
+          p.material.toLowerCase().includes(term)
+        );
+        mostrarProductos(filtrados);
+      }, 250); // Faster response
+    });
+
+    // Filtros de categorías optimizados
+    document.querySelectorAll('.filtro-categoria').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const cat = link.dataset.cat;
+        const filtrados = cat === 'Todas' 
+          ? productos 
+          : productos.filter(p => p.categoria === cat);
+        mostrarProductos(filtrados);
+      });
+    });
+
+    // Filtros de materiales optimizados
+    document.querySelectorAll('.filtro-material').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const mat = link.dataset.mat;
+        const filtrados = mat === 'Todos' 
+          ? productos 
+          : productos.filter(p => p.material.includes(mat));
+        mostrarProductos(filtrados);
+      });
+    });
+
+    // Vista de columnas optimizada
+    document.querySelectorAll('.vista').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        columnas = parseInt(link.dataset.cols);
+        const contenedor = document.getElementById('contenedor-productos');
+        
+        // Responsive: en móvil máximo 2 columnas
+        if (window.innerWidth < 992) { // lg breakpoint
+          if (columnas > 2) columnas = 2;
+          contenedor.className = `row row-cols-1 row-cols-sm-${columnas} g-4`;
+        } else {
+          contenedor.className = `row row-cols-1 row-cols-sm-2 row-cols-lg-${columnas} g-4`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
