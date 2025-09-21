@@ -730,7 +730,7 @@
 
     // Función para crear link de WhatsApp
     function crearWhatsappLink(producto) {
-      const mensaje = `*SOLICITUD DE JOYA - AMBER JOYERÍA* 💎%0A%0A` +
+      const mensaje = `*SOLICITUD DE JOYA - AMBER JOYERÍA* %0A%0A` +
                      `📋 *DATOS DEL PRODUCTO:*%0A` +
                      `• Nombre: ${encodeURIComponent(producto.nombre)}%0A` +
                      `• Código: ${producto.codigo}%0A` +
@@ -742,7 +742,7 @@
                      `• Disponibilidad%0A` +
                      `• Formas de pago%0A` +
                      `• Opciones de entrega%0A%0A` +
-                     `📍 *UBICACIÓN:* Santa Cruz, Bolivia%0A%0A` +
+                     `*UBICACIÓN:* Santa Cruz, Bolivia%0A%0A` +
                      `Espero su pronta respuesta. ¡Gracias!`;
       
       return `https://wa.me/59163488086?text=${mensaje}`;
