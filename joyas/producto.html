@@ -1,80 +1,1072 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Producto - Amber Joyas</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#003087" id="theme-color"/>
+  <title>Producto - Amber | Joyería</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
   <style>
-    .producto-img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; }
-    .precio { color:#ffb81c; font-weight:700; font-size:1.25rem; }
+    :root {
+      --primario: #003087; /* Azul PayPal original */
+      --secundario: #0070ba;
+      --dorado: #ffb81c;  /* Amarillo original */
+      --dorado-claro: #ffd166;
+      --fondo: #f8f9fa;
+      --texto: #333;
+      --blanco: #ffffff;
+      --gris-claro: #e9ecef;
+      --sombra: 0 2px 15px rgba(0, 48, 135, 0.1);
+      --sombra-hover: 0 8px 25px rgba(0, 48, 135, 0.15);
+      --transicion: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      line-height: 1.6;
+      font-weight: 400;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Navbar mejorado */
+    .navbar {
+      background: linear-gradient(135deg, var(--primario) 0%, var(--secundario) 100%) !important;
+      box-shadow: var(--sombra);
+      backdrop-filter: blur(10px);
+      transition: var(--transicion);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: white !important;
+      font-size: 1.5rem;
+      transition: var(--transicion);
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .navbar-brand i {
+      color: var(--dorado);
+      margin-right: 8px;
+      filter: drop-shadow(0 0 5px rgba(255, 184, 28, 0.3));
+    }
+
+    .navbar .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      transition: var(--transicion);
+      position: relative;
+    }
+
+    .navbar .nav-link:hover {
+      color: var(--dorado) !important;
+    }
+
+    /* Dark mode button mejorado */
+    #btnDark {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      transition: var(--transicion);
+    }
+
+    #btnDark:hover {
+      background: var(--dorado);
+      color: var(--primario) !important;
+      transform: translateY(-1px);
+      border-color: var(--dorado);
+    }
+
+    /* Breadcrumb personalizado */
+    .breadcrumb {
+      background: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .breadcrumb-item a {
+      color: var(--primario);
+      text-decoration: none;
+      transition: var(--transicion);
+    }
+
+    .breadcrumb-item a:hover {
+      color: var(--dorado);
+    }
+
+    .breadcrumb-item.active {
+      color: var(--dorado);
+    }
+
+    /* Container principal del producto */
+    .producto-container {
+      background: var(--blanco);
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+      padding: 2rem;
+      margin: 1rem 0;
+      transition: var(--transicion);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .producto-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primario), var(--dorado));
+    }
+
+    /* Imagen del producto */
+    .producto-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+      transition: var(--transicion);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .producto-img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .img-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 70%, rgba(255, 184, 28, 0.1));
+      pointer-events: none;
+      transition: var(--transicion);
+      opacity: 0;
+    }
+
+    .img-container:hover::after {
+      opacity: 1;
+    }
+
+    /* Información del producto */
+    .producto-titulo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primario);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primario), var(--dorado));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .producto-codigo {
+      background: linear-gradient(135deg, var(--gris-claro), #f1f3f4);
+      color: var(--primario);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+    }
+
+    .producto-categoria {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      color: var(--primario);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 0 0.5rem 1rem 0;
+    }
+
+    .producto-material {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 0 0.5rem 1rem 0;
+    }
+
+    .precio {
+      color: var(--dorado);
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 1.5rem 0;
+      text-shadow: 0 2px 4px rgba(255, 184, 28, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .precio .flag {
+      font-size: 1.5rem;
+    }
+
+    .descripcion {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--texto);
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.03), rgba(255, 184, 28, 0.03));
+      border-radius: 12px;
+      border-left: 4px solid var(--dorado);
+    }
+
+    /* Botones mejorados */
+    .btn {
+      border-radius: 25px;
+      font-weight: 600;
+      padding: 12px 24px;
+      transition: var(--transicion);
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #25d366, #20ba5a);
+      border: none;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+    }
+
+    .btn-success:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+      background: linear-gradient(135deg, #20ba5a, #25d366);
+    }
+
+    .btn-success::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-success:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline-secondary {
+      border: 2px solid var(--gris-claro);
+      color: var(--primario);
+      background: transparent;
+    }
+
+    .btn-outline-secondary:hover {
+      background: var(--primario);
+      border-color: var(--primario);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 48, 135, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 48, 135, 0.3);
+      background: linear-gradient(135deg, var(--secundario), var(--primario));
+    }
+
+    /* Características del producto */
+    .caracteristicas {
+      background: var(--blanco);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: var(--sombra);
+      margin-top: 2rem;
+    }
+
+    .caracteristicas h5 {
+      color: var(--primario);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .caracteristica-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--gris-claro);
+    }
+
+    .caracteristica-item:last-child {
+      border-bottom: none;
+    }
+
+    .caracteristica-item i {
+      color: var(--dorado);
+      width: 20px;
+      margin-right: 1rem;
+    }
+
+    /* Loader */
+    #loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      flex-direction: column;
+    }
+
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--gris-claro);
+      border-top: 3px solid var(--dorado);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .loader-text {
+      margin-top: 1rem;
+      color: var(--primario);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: white;
+      margin-top: auto;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+    }
+
+    footer a {
+      color: var(--dorado) !important;
+      text-decoration: none;
+      transition: var(--transicion);
+    }
+
+    footer a:hover {
+      color: var(--dorado-claro) !important;
+      text-shadow: 0 0 8px rgba(255, 184, 28, 0.5);
+    }
+
+    /* Modal mejorado */
+    .modal-content {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .modal-body {
+      padding: 0;
+    }
+
+    #modalImagenSrc {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      color: #e4e6eb;
+    }
+
+    .navbar.dark-mode {
+      background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
+    }
+
+    body.dark .producto-container {
+      background: #1e1e2e;
+      color: #e4e6eb;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark .caracteristicas {
+      background: #1e1e2e;
+      color: #e4e6eb;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark .caracteristicas h5 {
+      color: var(--dorado);
+    }
+
+    body.dark .caracteristica-item {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark .producto-codigo {
+      background: #2a2a3e;
+      color: var(--dorado);
+      border-color: rgba(255, 184, 28, 0.3);
+    }
+
+    body.dark .descripcion {
+      background: rgba(255, 184, 28, 0.05);
+      border-left-color: var(--dorado);
+      color: #e4e6eb;
+    }
+
+    body.dark .breadcrumb-item a {
+      color: var(--dorado);
+    }
+
+    body.dark .breadcrumb-item.active {
+      color: #e4e6eb;
+    }
+
+    body.dark .modal-content {
+      background: #1e1e2e;
+    }
+
+    body.dark .producto-titulo {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Error state */
+    .error-container {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .error-container i {
+      font-size: 4rem;
+      color: var(--gris-claro);
+      margin-bottom: 1rem;
+    }
+
+    .error-container h3 {
+      color: var(--primario);
+      margin-bottom: 1rem;
+    }
+
+    body.dark .error-container h3 {
+      color: var(--dorado);
+    }
+
+    body.dark .error-container i {
+      color: #666;
+    }
+
+    /* Animaciones */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .producto-titulo {
+        font-size: 1.6rem;
+      }
+      
+      .precio {
+        font-size: 2rem;
+      }
+      
+      .producto-container {
+        padding: 1.5rem;
+      }
+      
+      .caracteristicas {
+        padding: 1rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      #btnDark {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Back button con animación */
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--sombra-hover);
+      transition: var(--transicion);
+      opacity: 0.7;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1) translateY(-2px);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .back-btn {
+        bottom: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-light" style="background:#003087;">
-    <div class="container">
-      <a class="navbar-brand text-white" href="index.html"><i class="bi bi-gem" style="color:#ffb81c"></i> Amber</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><i class="bi bi-gem"></i> Amber</a>
+      
+      <div class="d-flex align-items-center">
+        <button id="btnDark" class="btn btn-sm text-white me-2" title="Cambiar tema">
+          <i class="bi bi-moon me-1"></i><span class="d-none d-sm-inline">Oscuro</span>
+        </button>
+      </div>
     </div>
   </nav>
 
-  <main class="container my-4">
-    <div id="contenido"></div>
+  <!-- Contenido principal -->
+  <main class="container my-4 flex-grow-1">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Producto</li>
+      </ol>
+    </nav>
+
+    <!-- Loader -->
+    <div id="loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Cargando producto...</div>
+    </div>
+
+    <!-- Contenido del producto -->
+    <div id="contenido" style="display:none;"></div>
   </main>
 
-  <footer class="text-center py-3" style="background:#003087;color:#fff">
-    <div class="container">Amber Joyas — <a href="https://wa.me/59163488086" class="text-white">WhatsApp</a></div>
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p class="mb-2">&copy; 2025 Amber Joyería | Todos los derechos reservados</p>
+      <p class="mb-0">
+        <i class="bi bi-geo-alt"></i> Santa Cruz, Bolivia | 
+        <i class="bi bi-telephone"></i> +591 70000000 | 
+        <i class="bi bi-whatsapp"></i> <a href="https://wa.me/59163488086">WhatsApp</a>
+      </p>
+    </div>
   </footer>
 
+  <!-- Modal para imagen ampliada -->
+  <div class="modal fade" id="modalImagen" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <img id="modalImagenSrc" src="" class="w-100" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante de regreso -->
+  <a href="index.html" class="back-btn btn btn-primary d-none" id="backBtn" title="Volver al catálogo">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    // obtener id de querystring
-    function getParam(name){
+    // Variables globales
+    let productoActual = null;
+
+    // Dark mode toggle - SE SINCRONIZA AUTOMÁTICAMENTE CON EL INDEX
+    const btnDark = document.getElementById('btnDark');
+    const isDarkStored = localStorage.getItem('darkMode') === 'true';
+    
+    // Aplicar tema guardado al cargar (sincronizado con index.html)
+    if (isDarkStored) {
+      document.body.classList.add('dark');
+      document.querySelector('.navbar').classList.add('dark-mode');
+      btnDark.innerHTML = '<i class="bi bi-sun me-1"></i><span class="d-none d-sm-inline">Claro</span>';
+    }
+    
+    btnDark.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      document.querySelector('.navbar').classList.toggle('dark-mode');
+      
+      // Guardar preferencia (se sincroniza con index.html)
+      localStorage.setItem('darkMode', isDark);
+      
+      // Cambiar texto e icono
+      if (isDark) {
+        btnDark.innerHTML = '<i class="bi bi-sun me-1"></i><span class="d-none d-sm-inline">Claro</span>';
+      } else {
+        btnDark.innerHTML = '<i class="bi bi-moon me-1"></i><span class="d-none d-sm-inline">Oscuro</span>';
+      }
+    });
+
+    // Obtener parámetro ID de la URL
+    function getParam(name) {
       const url = new URL(location.href);
       return url.searchParams.get(name);
     }
-    const id = Number(getParam('id') || 0);
-    if(!id){ document.getElementById('contenido').innerHTML = '<p>Producto no especificado.</p>'; }
 
-    fetch('productos.json')
-      .then(r => r.json())
-      .then(list => {
-        const p = list.find(x => x.id === id);
-        if(!p){ document.getElementById('contenido').innerHTML = '<p>Producto no encontrado.</p>'; return; }
+    // Función para obtener icono de categoría
+    function getCategoryIcon(categoria) {
+      const iconos = {
+        'Anillos': 'circle',
+        'Cadenas': 'link-45deg', 
+        'Colgantes': 'heart',
+        'Pendientes': 'earrings',
+        'Pulseras': 'watch',
+        'Broches': 'pin-angle'
+      };
+      return iconos[categoria] || 'gem';
+    }
 
-        const img = location.origin + '/' + p.imagen;
-        const html = `
-          <div class="row g-4 align-items-center">
-            <div class="col-12 col-md-6">
-              <img src="${p.imagen}" alt="${p.nombre}" class="producto-img shadow-sm">
+    // Función para obtener icono de material
+    function getMaterialIcon(material) {
+      const iconos = {
+        'Oro': 'sun',
+        'Plata': 'moon', 
+        'Oro Blanco': 'snow',
+        'Oro Rosa': 'sunrise',
+        'Platino': 'stars'
+      };
+      return iconos[material] || 'stars';
+    }
+
+    // Función para crear link de WhatsApp
+    function crearWhatsappLink(producto) {
+      const mensaje = `*SOLICITUD DE JOYA - AMBER JOYERÍA* 💎%0A%0A` +
+                     `📋 *DATOS DEL PRODUCTO:*%0A` +
+                     `• Nombre: ${encodeURIComponent(producto.nombre)}%0A` +
+                     `• Código: ${producto.codigo}%0A` +
+                     `• Precio: ${producto.precio} ${producto.moneda}%0A` +
+                     `• Material: ${encodeURIComponent(producto.material)}%0A` +
+                     `• Categoría: ${encodeURIComponent(producto.categoria)}%0A%0A` +
+                     `🛍️ *SOLICITO:*%0A` +
+                     `• Información adicional%0A` +
+                     `• Disponibilidad%0A` +
+                     `• Formas de pago%0A` +
+                     `• Opciones de entrega%0A%0A` +
+                     `📍 *UBICACIÓN:* Santa Cruz, Bolivia%0A%0A` +
+                     `Espero su pronta respuesta. ¡Gracias!`;
+      
+      return `https://wa.me/59163488086?text=${mensaje}`;
+    }
+
+    // Función para abrir modal de imagen - FUNCIONALIDAD PRINCIPAL
+    function abrirModalImagen(src, alt) {
+      console.log('Abriendo modal con:', src, alt); // Debug
+      const modalImg = document.getElementById('modalImagenSrc');
+      const modal = document.getElementById('modalImagen');
+      
+      if (modalImg && modal) {
+        modalImg.src = src;
+        modalImg.alt = alt;
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
+      }
+    }
+
+    // Función para añadir meta tags dinámicos para SEO
+    function addMetaTags(producto) {
+      // Meta description
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = 'description';
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.content = `${producto.nombre} - ${producto.descripcion} Precio: ${producto.precio} ${producto.moneda}. Amber Joyería, Santa Cruz, Bolivia.`;
+
+      // Open Graph tags
+      const ogTags = [
+        { property: 'og:title', content: `${producto.nombre} - Amber Joyería` },
+        { property: 'og:description', content: producto.descripcion },
+        { property: 'og:image', content: window.location.origin + '/' + producto.imagen },
+        { property: 'og:url', content: window.location.href },
+        { property: 'og:type', content: 'product' }
+      ];
+
+      ogTags.forEach(tag => {
+        let existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+        if (!existingTag) {
+          existingTag = document.createElement('meta');
+          existingTag.setAttribute('property', tag.property);
+          document.head.appendChild(existingTag);
+        }
+        existingTag.content = tag.content;
+      });
+    }
+
+    // Función principal para mostrar producto
+    function mostrarProducto(producto) {
+      productoActual = producto; // Guardar referencia global
+      
+      // Actualizar título de la página
+      document.title = `${producto.nombre} - Amber Joyería`;
+      
+      // Actualizar breadcrumb
+      const breadcrumb = document.querySelector('.breadcrumb');
+      breadcrumb.innerHTML = `
+        <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
+        <li class="breadcrumb-item"><a href="index.html">${producto.categoria}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">${producto.nombre}</li>
+      `;
+
+      // Agregar meta tags para SEO
+      addMetaTags(producto);
+
+      // Crear HTML del producto
+      const html = `
+        <div class="producto-container fade-in">
+          <div class="row g-4 align-items-start">
+            <div class="col-12 col-lg-6">
+              <div class="img-container">
+                <img src="${producto.imagen}" 
+                     alt="${producto.nombre}" 
+                     class="producto-img"
+                     id="imagenProducto"
+                     loading="lazy">
+              </div>
             </div>
-            <div class="col-12 col-md-6">
-              <h3>${p.nombre}</h3>
-              <p class="text-muted">Código: <strong>${p.codigo}</strong></p>
-              <p class="mb-2"><small class="text-muted">${p.categoria} • ${p.material}</small></p>
-              <p class="precio"><span style="font-size:1.05rem">🇧🇴</span> ${p.precio} ${p.moneda}</p>
-              <p class="mt-3">${p.descripcion}</p>
-
-              <div class="mt-4 d-grid gap-2">
-                <a class="btn btn-success" target="_blank" href="${crearWhatsappLink(p)}">
-                  <i class="bi bi-whatsapp"></i> Pedir por WhatsApp
+            
+            <div class="col-12 col-lg-6">
+              <h1 class="producto-titulo">${producto.nombre}</h1>
+              
+              <div class="producto-codigo">
+                <i class="bi bi-tag me-2"></i>Código: ${producto.codigo}
+              </div>
+              
+              <div class="mb-3">
+                <span class="producto-categoria">
+                  <i class="bi bi-${getCategoryIcon(producto.categoria)}"></i>
+                  ${producto.categoria}
+                </span>
+                <span class="producto-material">
+                  <i class="bi bi-${getMaterialIcon(producto.material)}"></i>
+                  ${producto.material}
+                </span>
+              </div>
+              
+              <div class="precio">
+                <span class="flag">🇧🇴</span>
+                ${producto.precio} ${producto.moneda}
+              </div>
+              
+              <div class="descripcion">
+                <i class="bi bi-info-circle me-2"></i>
+                ${producto.descripcion}
+              </div>
+              
+              <div class="d-grid gap-3 mt-4">
+                <a href="${crearWhatsappLink(producto)}" 
+                   target="_blank" 
+                   class="btn btn-success btn-lg"
+                   id="btnWhatsApp">
+                  <i class="bi bi-whatsapp me-2"></i>
+                  Pedir por WhatsApp
                 </a>
-                <a class="btn btn-outline-secondary" href="index.html">Volver al catálogo</a>
+                
+                <div class="row g-2">
+                  <div class="col">
+                    <a href="index.html" class="btn btn-outline-secondary w-100">
+                      <i class="bi bi-arrow-left me-2"></i>Catálogo
+                    </a>
+                  </div>
+                  <div class="col">
+                    <button type="button" 
+                            class="btn btn-primary w-100"
+                            id="btnAmpliar">
+                      <i class="bi bi-zoom-in me-2"></i>Ampliar
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        `;
-        document.getElementById('contenido').innerHTML = html;
-      });
+        </div>
 
-    function crearWhatsappLink(p){
-      const baseImg = location.origin + '/' + p.imagen;
-      const text = `Hola,%20deseo%20solicitar%20esta%20joya%20de%20Amber:%0A` +
-                   `*${encodeURIComponent(p.nombre)}*%20(Código:%20${encodeURIComponent(p.codigo)})%0A` +
-                   `Precio:%20${encodeURIComponent(p.precio)}%20${encodeURIComponent(p.moneda)}%0A` +
-                   `Imagen:%20${encodeURIComponent(baseImg)}%0A%0APor%20favor%20indiquen%20disponibilidad%20y%20tamaños.`;
-      return `https://wa.me/59163488086?text=${text}`;
+        <div class="caracteristicas fade-in" style="animation-delay: 0.2s;">
+          <h5><i class="bi bi-list-check"></i>Características del Producto</h5>
+          <div class="caracteristica-item">
+            <i class="bi bi-gem"></i>
+            <div>
+              <strong>Categoría:</strong> ${producto.categoria}
+            </div>
+          </div>
+          <div class="caracteristica-item">
+            <i class="bi bi-stars"></i>
+            <div>
+              <strong>Material:</strong> ${producto.material}
+            </div>
+          </div>
+          <div class="caracteristica-item">
+            <i class="bi bi-tag"></i>
+            <div>
+              <strong>Código:</strong> ${producto.codigo}
+            </div>
+          </div>
+          <div class="caracteristica-item">
+            <i class="bi bi-currency-dollar"></i>
+            <div>
+              <strong>Precio:</strong> ${producto.precio} ${producto.moneda} (Bolivianos)
+            </div>
+          </div>
+          <div class="caracteristica-item">
+            <i class="bi bi-geo-alt"></i>
+            <div>
+              <strong>Disponible en:</strong> Santa Cruz, Bolivia
+            </div>
+          </div>
+          <div class="caracteristica-item">
+            <i class="bi bi-shield-check"></i>
+            <div>
+              <strong>Garantía:</strong> Certificado de autenticidad incluido
+            </div>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('contenido').innerHTML = html;
+      
+      // ASIGNAR EVENTOS DESPUÉS DE CREAR EL HTML
+      setTimeout(() => {
+        // Evento para imagen del producto
+        const imagenProducto = document.getElementById('imagenProducto');
+        if (imagenProducto) {
+          imagenProducto.addEventListener('click', () => {
+            abrirModalImagen(producto.imagen, producto.nombre);
+          });
+        }
+        
+        // Evento para botón ampliar
+        const btnAmpliar = document.getElementById('btnAmpliar');
+        if (btnAmpliar) {
+          btnAmpliar.addEventListener('click', () => {
+            abrirModalImagen(producto.imagen, producto.nombre);
+          });
+        }
+        
+        // Verificar que el botón de WhatsApp tenga el link correcto
+        const btnWhatsApp = document.getElementById('btnWhatsApp');
+        if (btnWhatsApp) {
+          console.log('Botón WhatsApp configurado:', btnWhatsApp.href);
+        }
+      }, 100);
     }
+
+    // INICIALIZAR LA APLICACIÓN
+    const productId = Number(getParam('id') || 0);
+
+    if (!productId) {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('contenido').style.display = 'block';
+        document.getElementById('contenido').innerHTML = `
+          <div class="error-container">
+            <i class="bi bi-exclamation-triangle"></i>
+            <h3>Producto no especificado</h3>
+            <p class="text-muted">No se ha proporcionado un ID de producto válido.</p>
+            <a href="index.html" class="btn btn-primary">
+              <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
+            </a>
+          </div>
+        `;
+      }, 500);
+    } else {
+      // Cargar producto
+      fetch('productos.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al cargar productos');
+          }
+          return response.json();
+        })
+        .then(productos => {
+          const producto = productos.find(p => p.id === productId);
+          
+          setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+            
+            if (!producto) {
+              document.getElementById('contenido').innerHTML = `
+                <div class="error-container">
+                  <i class="bi bi-search"></i>
+                  <h3>Producto no encontrado</h3>
+                  <p class="text-muted">El producto con ID ${productId} no existe en nuestro catálogo.</p>
+                  <a href="index.html" class="btn btn-primary">
+                    <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
+                  </a>
+                </div>
+              `;
+            } else {
+              mostrarProducto(producto);
+              document.getElementById('backBtn').classList.remove('d-none');
+            }
+          }, 800);
+        })
+        .catch(error => {
+          console.error('Error cargando productos:', error);
+          setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+            document.getElementById('contenido').innerHTML = `
+              <div class="error-container">
+                <i class="bi bi-wifi-off"></i>
+                <h3>Error de conexión</h3>
+                <p class="text-muted">No se pudo cargar la información del producto. ${error.message}</p>
+                <button onclick="location.reload()" class="btn btn-primary me-2">
+                  <i class="bi bi-arrow-clockwise me-2"></i>Reintentar
+                </button>
+                <a href="index.html" class="btn btn-outline-secondary">
+                  <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
+                </a>
+              </div>
+            `;
+          }, 500);
+        });
+    }
+
+    // Detectar scroll para efectos del botón flotante
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const backBtn = document.getElementById('backBtn');
+      
+      if (scrollTop > 300) {
+        backBtn.style.opacity = scrollTop > lastScrollTop ? '0.5' : '0.8';
+      } else {
+        backBtn.style.opacity = '0.7';
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Preloader para mejorar UX
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+
+    // Manejo de errores de imagen
+    document.addEventListener('error', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"%3E%3Crect width="300" height="300" fill="%23f8f9fa"/%3E%3Ctext x="50%" y="50%" dominant-baseline="central" text-anchor="middle" fill="%23adb5bd" font-family="Inter, sans-serif" font-size="16"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
+        e.target.alt = 'Imagen no disponible';
+      }
+    }, true);
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    document.getElementById('modalImagen').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        bootstrap.Modal.getInstance(e.target).hide();
+      }
+    });
+
+    // Tecla ESC para cerrar modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.querySelector('.modal.show');
+        if (modal) {
+          bootstrap.Modal.getInstance(modal).hide();
+        }
+      }
+    });
   </script>
 </body>
 </html>
