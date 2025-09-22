@@ -5,7 +5,7 @@
     "nombre": "Anillo de Plata con Circonita",
     "precio": 280,
     "moneda": "Bs",
-    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758381285/AN-PL-001_hafqq8.png",
+    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758575260/AN-PL-001_sgygof.png",
     "categoria": "Anillos",
     "material": "Plata",
     "descripcion": "Elegante anillo de plata 925 con circonita brillante ideal para ocasiones especiales."
@@ -16,43 +16,44 @@
     "nombre": "Pendientes de Oro Rosa",
     "precio": 550,
     "moneda": "Bs",
-    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758381285/AN-PL-001_hafqq8.png",
+    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758575260/PE-PL-001_yjotxz.png",
     "categoria": "Pendientes",
-    "material": "Oro",
+    "material": "Plata",
     "descripcion": "Hermosos pendientes de oro rosa con diseño moderno y sofisticado."
   },
   {
     "id": 3,
-    "codigo": "CA-OR-001",
+    "codigo": "CO-PL-001",
     "nombre": "Cadena Clásica de Oro Amarillo",
     "precio": 1200,
     "moneda": "Bs",
-    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758381310/PE-PL-001_jctqnc.png",
+    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758575258/CO-PL-003_cmfjfd.png",
     "categoria": "Cadenas",
-    "material": "Oro",
+    "material": "Plata",
     "descripcion": "Cadena clásica de oro amarillo 18k, un accesorio atemporal para cualquier ocasión."
   },
   {
     "id": 4,
-    "codigo": "CO-PL-001",
+    "codigo": "CO-PL-002",
     "nombre": "Colgante de Plata con Perla",
     "precio": 430,
     "moneda": "Bs",
-    "imagen": "joyas/colgantes/CO-PL-001.png",
+    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758575258/CO-PL-002_uarnep.png",
     "categoria": "Colgantes",
     "material": "Plata",
     "descripcion": "Delicado colgante de plata con perla natural, símbolo de elegancia y pureza."
   },
   {
     "id": 5,
-    "codigo": "AN-OR-002",
+    "codigo": "CO-PL-003",
     "nombre": "Anillo de Oro Blanco con Diamante",
     "precio": 4500,
     "moneda": "Bs",
-    "imagen": "joyas/anillos/AN-OR-002.png",
+    "imagen": "https://res.cloudinary.com/dv6d41ect/image/upload/v1758575257/CO-PL-001_kknxqv.png",
     "categoria": "Anillos",
-    "material": "Oro Blanco",
+    "material": "Plata",
     "descripcion": "Exclusivo anillo de oro blanco 18k con diamante central, ideal para compromiso."
   }
 ]
+
 
