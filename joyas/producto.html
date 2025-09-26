@@ -4,25 +4,29 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#003087" id="theme-color"/>
-  <title>Producto - Amber | Joyería</title>
+  <title>Producto - Amber Joyería</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Favicon + Iconos -->
+  <link rel="icon" href="https://res.cloudinary.com/dv6d41ect/image/upload/v1758919530/amber_knmadq.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dv6d41ect/image/upload/v1758919530/amber_knmadq.png" />
 
   <style>
     :root {
-      --primario: #003087; /* Azul PayPal original */
+      --primario: #003087;
       --secundario: #0070ba;
-      --dorado: #ffb81c;  /* Amarillo original */
+      --dorado: #ffb81c;
       --dorado-claro: #ffd166;
       --fondo: #f8f9fa;
       --texto: #333;
       --blanco: #ffffff;
       --gris-claro: #e9ecef;
+      --verde-claro: #f0f9f6;
       --sombra: 0 2px 15px rgba(0, 48, 135, 0.1);
       --sombra-hover: 0 8px 25px rgba(0, 48, 135, 0.15);
       --transicion: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -33,62 +37,88 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--fondo);
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--fondo) 0%, var(--verde-claro) 100%);
       color: var(--texto);
       line-height: 1.6;
-      font-weight: 400;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      font-weight: 400;
     }
 
-    /* Navbar mejorado */
+    /* Navbar */
     .navbar {
       background: linear-gradient(135deg, var(--primario) 0%, var(--secundario) 100%) !important;
       box-shadow: var(--sombra);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       transition: var(--transicion);
+      padding: 0.75rem 0;
     }
 
     .navbar-brand {
       font-weight: 700;
       color: white !important;
-      font-size: 1.5rem;
+      font-size: clamp(1.3rem, 3vw, 1.5rem);
       transition: var(--transicion);
     }
 
     .navbar-brand:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
     .navbar-brand i {
       color: var(--dorado);
       margin-right: 8px;
-      filter: drop-shadow(0 0 5px rgba(255, 184, 28, 0.3));
+      filter: drop-shadow(0 0 3px rgba(255, 184, 28, 0.4));
     }
 
-    .navbar .nav-link {
-      color: rgba(255, 255, 255, 0.9) !important;
-      font-weight: 500;
+    .navbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+    }
+
+    .back-btn {
+      color: rgba(255, 255, 255, 0.92) !important;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       transition: var(--transicion);
-      position: relative;
+      font-weight: 500;
+      font-size: 0.85rem;
+      min-width: 44px;
+      height: 36px;
+      justify-content: center;
     }
 
-    .navbar .nav-link:hover {
-      color: var(--dorado) !important;
+    .back-btn:hover {
+      background: var(--dorado);
+      color: var(--primario) !important;
+      transform: translateY(-1px);
+      border-color: var(--dorado);
     }
 
-    /* Dark mode button mejorado */
     #btnDark {
       background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.85rem;
+      color: white;
       transition: var(--transicion);
+      min-width: 44px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
     }
 
     #btnDark:hover {
@@ -98,11 +128,58 @@
       border-color: var(--dorado);
     }
 
-    /* Breadcrumb personalizado */
+    .cart-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.85rem;
+      transition: var(--transicion);
+      color: white;
+      position: relative;
+      min-width: 44px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .cart-btn:hover {
+      background: var(--dorado);
+      color: var(--primario) !important;
+      transform: translateY(-1px);
+      border-color: var(--dorado);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #dc3545;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 2px 8px rgba(220, 53, 69, 0.4);
+      z-index: 10;
+    }
+
+    /* Breadcrumb */
     .breadcrumb {
       background: none;
       padding: 0;
       margin: 1rem 0;
+    }
+
+    .breadcrumb-item {
+      font-weight: 500;
     }
 
     .breadcrumb-item a {
@@ -116,41 +193,42 @@
     }
 
     .breadcrumb-item.active {
-      color: var(--dorado);
+      color: var(--texto);
     }
 
-    /* Container principal del producto */
+    .breadcrumb-item + .breadcrumb-item::before {
+      color: var(--primario);
+    }
+
+    /* Container del producto */
     .producto-container {
       background: var(--blanco);
-      border-radius: 20px;
+      border-radius: 16px;
       box-shadow: var(--sombra);
-      padding: 2rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
       margin: 1rem 0;
-      transition: var(--transicion);
-      position: relative;
       overflow: hidden;
     }
 
-    .producto-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primario), var(--dorado));
+    /* Imagen del producto */
+    .producto-img-container {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+      display: block;
     }
 
-    /* Imagen del producto */
     .producto-img {
       width: 100%;
+      height: auto;
       aspect-ratio: 1/1;
       object-fit: cover;
-      border-radius: 15px;
+      border-radius: 16px;
       box-shadow: var(--sombra);
-      transition: var(--transicion);
       cursor: pointer;
-      position: relative;
+      display: block;
+      transition: var(--transicion);
     }
 
     .producto-img:hover {
@@ -158,53 +236,51 @@
       box-shadow: var(--sombra-hover);
     }
 
-    .img-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-    }
-
-    .img-container::after {
-      content: '';
+    .categoria-badge-img {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, transparent 70%, rgba(255, 184, 28, 0.1));
-      pointer-events: none;
-      transition: var(--transicion);
-      opacity: 0;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      color: var(--primario);
+      padding: 0.3rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(255, 184, 28, 0.3);
     }
 
-    .img-container:hover::after {
-      opacity: 1;
+    .codigo-producto-img {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 48, 135, 0.9);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     /* Información del producto */
     .producto-titulo {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
       color: var(--primario);
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--primario), var(--dorado));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 1.3;
+      text-align: center;
     }
 
-    .producto-codigo {
-      background: linear-gradient(135deg, var(--gris-claro), #f1f3f4);
-      color: var(--primario);
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(0, 48, 135, 0.1);
+    @media (min-width: 992px) {
+      .producto-titulo {
+        text-align: left;
+      }
     }
 
-    .producto-categoria {
+    .categoria-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -213,146 +289,249 @@
       padding: 0.4rem 1rem;
       border-radius: 20px;
       font-weight: 600;
-      font-size: 0.9rem;
-      margin: 0 0.5rem 1rem 0;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(255, 184, 28, 0.3);
     }
 
-    .producto-material {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, var(--primario), var(--secundario));
-      color: white;
-      padding: 0.4rem 1rem;
+    .producto-codigo {
+      background: var(--verde-claro);
+      color: var(--primario);
+      padding: 0.4rem 0.8rem;
       border-radius: 20px;
       font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
       font-size: 0.9rem;
-      margin: 0 0.5rem 1rem 0;
+      border: 2px solid rgba(0, 48, 135, 0.2);
     }
 
     .precio {
-      color: var(--dorado);
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin: 1.5rem 0;
-      text-shadow: 0 2px 4px rgba(255, 184, 28, 0.2);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+
+    @media (min-width: 992px) {
+      .precio {
+        justify-content: flex-start;
+      }
+    }
+
+    .precio-valor {
+      color: var(--dorado);
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      text-shadow: 0 2px 4px rgba(255, 184, 28, 0.2);
     }
 
     .precio .flag {
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
     }
 
-    .descripcion {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--texto);
+    .descripcion-simple {
       margin: 1.5rem 0;
-      padding: 1.5rem;
-      background: linear-gradient(135deg, rgba(0, 48, 135, 0.03), rgba(255, 184, 28, 0.03));
-      border-radius: 12px;
-      border-left: 4px solid var(--dorado);
+      text-align: center;
     }
 
-    /* Botones mejorados */
-    .btn {
-      border-radius: 25px;
+    @media (min-width: 992px) {
+      .descripcion-simple {
+        text-align: left;
+      }
+    }
+
+    .descripcion-simple h6 {
+      color: var(--primario);
       font-weight: 600;
-      padding: 12px 24px;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    @media (min-width: 992px) {
+      .descripcion-simple h6 {
+        justify-content: flex-start;
+      }
+    }
+
+    .descripcion-simple p {
+      font-size: clamp(0.95rem, 2.5vw, 1rem);
+      line-height: 1.6;
+      color: var(--texto);
+      margin: 0;
+    }
+
+    /* Características */
+    .caracteristicas-simple {
+      margin: 1.5rem 0;
+    }
+
+    .caracteristicas-simple h6 {
+      color: var(--primario);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    @media (min-width: 992px) {
+      .caracteristicas-simple h6 {
+        justify-content: flex-start;
+      }
+    }
+
+    .caracteristicas-simple ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .caracteristicas-simple li {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.3rem 0;
+      font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+    }
+
+    .caracteristicas-simple li i {
+      color: var(--primario);
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Botones */
+    .btn {
+      border-radius: 12px;
+      font-weight: 600;
+      padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 20px);
+      font-size: clamp(0.85rem, 2.2vw, 0.9rem);
       transition: var(--transicion);
-      font-size: 1rem;
-      position: relative;
-      overflow: hidden;
+      text-decoration: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .btn i {
+      font-size: 0.9em;
     }
 
     .btn-success {
       background: linear-gradient(135deg, #25d366, #20ba5a);
-      border: none;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+      color: white;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
     }
 
     .btn-success:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
       background: linear-gradient(135deg, #20ba5a, #25d366);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
     }
 
-    .btn-success::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
+    .btn-outline-primary {
+      border: 2px solid var(--dorado);
+      color: var(--dorado);
+      background: transparent;
     }
 
-    .btn-success:hover::before {
-      left: 100%;
+    .btn-outline-primary:hover {
+      background: var(--dorado);
+      color: white;
+      border-color: var(--dorado);
+      transform: translateY(-2px);
     }
 
     .btn-outline-secondary {
-      border: 2px solid var(--gris-claro);
+      border: 2px solid var(--primario);
       color: var(--primario);
       background: transparent;
     }
 
     .btn-outline-secondary:hover {
       background: var(--primario);
-      border-color: var(--primario);
       color: white;
+      border-color: var(--primario);
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.2);
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: white;
       border: none;
-      box-shadow: 0 4px 15px rgba(0, 48, 135, 0.2);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 48, 135, 0.3);
       background: linear-gradient(135deg, var(--secundario), var(--primario));
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 48, 135, 0.3);
     }
 
-    /* Características del producto */
-    .caracteristicas {
-      background: var(--blanco);
-      border-radius: 15px;
-      padding: 1.5rem;
-      box-shadow: var(--sombra);
-      margin-top: 2rem;
-    }
-
-    .caracteristicas h5 {
+    .btn-cart {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+      border: none;
       color: var(--primario);
-      font-weight: 700;
+      font-weight: 600;
+    }
+
+    .btn-cart:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 184, 28, 0.3);
+      color: var(--primario);
+    }
+
+    /* Información adicional */
+    .info-adicional {
+      background: linear-gradient(135deg, var(--verde-claro), rgba(255, 255, 255, 0.8));
+      border-radius: 12px;
+      padding: clamp(1.2rem, 3vw, 1.8rem);
+      margin-top: 2rem;
+      box-shadow: var(--sombra);
+      backdrop-filter: blur(10px);
+    }
+
+    .info-adicional h6 {
+      color: var(--primario);
+      font-weight: 600;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      font-size: 1.1rem;
     }
 
-    .caracteristica-item {
+    @media (min-width: 768px) {
+      .info-adicional h6 {
+        justify-content: flex-start;
+      }
+    }
+
+    .info-item {
       display: flex;
       align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--gris-claro);
+      padding: 0.5rem 0;
+      font-size: clamp(0.85rem, 2vw, 0.9rem);
     }
 
-    .caracteristica-item:last-child {
-      border-bottom: none;
-    }
-
-    .caracteristica-item i {
+    .info-item i {
       color: var(--dorado);
-      width: 20px;
-      margin-right: 1rem;
+      width: 18px;
+      margin-right: 0.8rem;
+      flex-shrink: 0;
     }
 
     /* Loader */
@@ -365,12 +544,12 @@
     }
 
     .loader-spinner {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border: 3px solid var(--gris-claro);
       border-top: 3px solid var(--dorado);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin 1s linear infinite;
     }
 
     .loader-text {
@@ -384,7 +563,7 @@
       background: linear-gradient(135deg, var(--primario), var(--secundario));
       color: white;
       margin-top: auto;
-      padding: 2rem 0;
+      padding: 1.8rem 0;
       position: relative;
     }
 
@@ -406,98 +585,34 @@
 
     footer a:hover {
       color: var(--dorado-claro) !important;
-      text-shadow: 0 0 8px rgba(255, 184, 28, 0.5);
+      text-shadow: 0 0 5px rgba(255, 184, 28, 0.4);
     }
 
-    /* Modal mejorado */
+    /* Modal */
     .modal-content {
       border: none;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
-
-    .modal-body {
-      padding: 0;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     #modalImagenSrc {
       width: 100%;
       height: auto;
-      display: block;
-    }
-
-    /* Dark mode */
-    body.dark {
-      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-      color: #e4e6eb;
-    }
-
-    .navbar.dark-mode {
-      background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
-    }
-
-    body.dark .producto-container {
-      background: #1e1e2e;
-      color: #e4e6eb;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    body.dark .caracteristicas {
-      background: #1e1e2e;
-      color: #e4e6eb;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    body.dark .caracteristicas h5 {
-      color: var(--dorado);
-    }
-
-    body.dark .caracteristica-item {
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-
-    body.dark .producto-codigo {
-      background: #2a2a3e;
-      color: var(--dorado);
-      border-color: rgba(255, 184, 28, 0.3);
-    }
-
-    body.dark .descripcion {
-      background: rgba(255, 184, 28, 0.05);
-      border-left-color: var(--dorado);
-      color: #e4e6eb;
-    }
-
-    body.dark .breadcrumb-item a {
-      color: var(--dorado);
-    }
-
-    body.dark .breadcrumb-item.active {
-      color: #e4e6eb;
-    }
-
-    body.dark .modal-content {
-      background: #1e1e2e;
-    }
-
-    body.dark .producto-titulo {
-      background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      border-radius: 8px;
     }
 
     /* Error state */
     .error-container {
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
+      background: var(--blanco);
+      border-radius: 16px;
+      box-shadow: var(--sombra);
+      margin: 1rem 0;
     }
 
     .error-container i {
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: var(--gris-claro);
       margin-bottom: 1rem;
     }
@@ -505,19 +620,382 @@
     .error-container h3 {
       color: var(--primario);
       margin-bottom: 1rem;
+      font-size: clamp(1.3rem, 3vw, 1.5rem);
     }
 
-    body.dark .error-container h3 {
+    /* Carrito sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 85vw);
+      height: 100vh;
+      background: var(--blanco);
+      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+      z-index: 1050;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-sidebar.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 1.2rem;
+      border-bottom: 2px solid var(--gris-claro);
+      background: linear-gradient(135deg, var(--primario), var(--secundario));
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .cart-header h5 {
+      margin: 0;
+      color: white;
+      font-weight: 600;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transicion);
+    }
+
+    .cart-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem;
+      border-bottom: 1px solid var(--gris-claro);
+      transition: var(--transicion);
+      border-radius: 8px;
+      margin-bottom: 0.3rem;
+      gap: 0.5rem;
+    }
+
+    .cart-item:hover {
+      background: var(--verde-claro);
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .cart-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      font-weight: 600;
+      color: var(--primario);
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .cart-item-code {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 0.2rem;
+    }
+
+    .cart-item-price {
       color: var(--dorado);
+      font-weight: 600;
+      font-size: 0.8rem;
     }
 
-    body.dark .error-container i {
-      color: #666;
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+    }
+
+    .quantity-btn {
+      background: var(--gris-claro);
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transicion);
+      color: var(--texto);
+    }
+
+    .quantity-btn:hover {
+      background: var(--primario);
+      color: white;
+    }
+
+    .quantity {
+      font-weight: 600;
+      min-width: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .remove-item {
+      background: #dc3545;
+      color: white;
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 0.3rem;
+      font-size: 0.75rem;
+      transition: var(--transicion);
+    }
+
+    .remove-item:hover {
+      background: #c82333;
+    }
+
+    /* Footer del carrito */
+    .cart-footer {
+      padding: 1rem;
+      border-top: 2px solid var(--gris-claro);
+      background: var(--verde-claro);
+      flex-shrink: 0;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+    }
+
+    @media (max-width: 480px) {
+      .cart-footer {
+        padding: 0.8rem;
+      }
+      
+      .cart-total {
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+      }
+      
+      #checkoutBtn {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+        min-height: 44px;
+      }
+      
+      .cart-sidebar {
+        width: 100vw;
+      }
+    }
+
+    .cart-total {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 700;
+      color: var(--primario);
+      margin-bottom: 0.8rem;
+      text-align: center;
+      padding: 0.7rem;
+      background: var(--blanco);
+      border-radius: 8px;
+      border: 2px solid var(--dorado);
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #64748b;
+    }
+
+    .cart-empty i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gris-claro);
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1040;
+      display: none;
+    }
+
+    .cart-overlay.active {
+      display: block;
+    }
+
+    /* Dark mode - Mejorado para mejor visibilidad */
+    body.dark {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f5f9;
+    }
+
+    .navbar.dark-mode {
+      background: linear-gradient(135deg, #1e293b, #334155) !important;
+    }
+
+    body.dark .producto-container {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 184, 28, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .breadcrumb {
+      color: #cbd5e1;
+    }
+
+    body.dark .breadcrumb-item a {
+      color: var(--dorado-claro);
+    }
+
+    body.dark .breadcrumb-item.active {
+      color: #f1f5f9;
+    }
+
+    body.dark .info-adicional {
+      background: rgba(30, 41, 59, 0.9);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 184, 28, 0.1);
+    }
+
+    body.dark .descripcion-simple,
+    body.dark .caracteristicas-simple,
+    body.dark .info-adicional {
+      color: #e2e8f0;
+    }
+
+    body.dark .descripcion-simple h6,
+    body.dark .caracteristicas-simple h6,
+    body.dark .info-adicional h6 {
+      color: var(--dorado-claro) !important;
+    }
+
+    body.dark .producto-titulo {
+      color: var(--dorado-claro) !important;
+    }
+
+    body.dark .error-container {
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
+    body.dark .modal-content {
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
+    body.dark .precio {
+      color: #f1f5f9;
+    }
+
+    body.dark .precio-valor {
+      color: var(--dorado-claro) !important;
+    }
+
+    body.dark .producto-codigo {
+      background: #334155;
+      color: var(--dorado-claro);
+      border-color: rgba(255, 212, 102, 0.3);
+    }
+
+    body.dark .cart-sidebar {
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
+    body.dark .cart-header {
+      background: linear-gradient(135deg, #1e293b, #334155);
+    }
+
+    body.dark .cart-footer {
+      background: #334155;
+    }
+
+    body.dark .cart-total {
+      background: #475569;
+      color: var(--dorado-claro);
+      border-color: var(--dorado-claro);
+    }
+
+    body.dark .cart-item:hover {
+      background: #334155;
+    }
+
+    body.dark .quantity-btn {
+      background: #475569;
+      color: #f1f5f9;
+    }
+
+    body.dark .quantity-btn:hover {
+      background: var(--dorado);
+      color: var(--primario);
     }
 
     /* Animaciones */
     @keyframes spin {
       to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
     }
 
     @keyframes fadeInUp {
@@ -531,87 +1009,131 @@
       }
     }
 
-    .fade-in {
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
-      .producto-titulo {
-        font-size: 1.6rem;
+      .navbar-brand {
+        font-size: 1.3rem;
       }
       
-      .precio {
-        font-size: 2rem;
+      .navbar-controls {
+        gap: 0.3rem;
+      }
+      
+      #btnDark span,
+      .back-btn span,
+      .cart-btn span {
+        display: none !important;
+      }
+      
+      #btnDark,
+      .back-btn,
+      .cart-btn {
+        min-width: 40px;
+        height: 32px;
+        padding: 0.3rem 0.5rem;
       }
       
       .producto-container {
         padding: 1.5rem;
       }
       
-      .caracteristicas {
-        padding: 1rem;
+      .info-adicional {
+        padding: 1.2rem;
       }
-      
+
       .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-
-      #btnDark {
         font-size: 0.8rem;
-        padding: 4px 8px;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .cart-count {
+        width: 18px;
+        height: 18px;
+        font-size: 0.65rem;
+        top: -6px;
+        right: -6px;
       }
     }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+    @media (max-width: 480px) {
+      .producto-container {
+        padding: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .breadcrumb {
+        padding: 0.6rem 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+      }
     }
 
-    /* Back button con animación */
-    .back-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 1000;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--sombra-hover);
-      transition: var(--transicion);
-      opacity: 0.7;
-    }
+    /* Optimización touch */
+    @media (hover: none) and (pointer: coarse) {
+      .btn {
+        min-height: 44px;
+      }
 
-    .back-btn:hover {
-      transform: scale(1.1) translateY(-2px);
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
+      .cart-btn,
+      #btnDark,
       .back-btn {
-        bottom: 15px;
-        left: 15px;
-        width: 45px;
-        height: 45px;
+        min-height: 44px;
+        min-width: 44px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Carrito Sidebar -->
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h5><i class="bi bi-cart3 me-2"></i>Mi Carrito</h5>
+      <button id="cartClose" class="cart-close">&times;</button>
+    </div>
+    <div class="cart-body" id="cartItems">
+      <div class="cart-empty">
+        <i class="bi bi-cart-x"></i>
+        <h5>Carrito vacío</h5>
+        <p>Agrega joyas para comenzar tu pedido</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total">
+        Total: <span id="cartTotal">0 Bs</span>
+      </div>
+      <button id="checkoutBtn" class="btn btn-success w-100">
+        <i class="bi bi-whatsapp me-2"></i>Enviar Pedido
+      </button>
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html"><i class="bi bi-gem"></i> Amber</a>
+  <nav class="navbar sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="index.html" class="navbar-brand">
+        <i class="bi bi-gem"></i>
+        Amber Joyería
+      </a>
       
-      <div class="d-flex align-items-center">
-        <button id="btnDark" class="btn btn-sm text-white me-2" title="Cambiar tema">
+      <div class="navbar-controls">
+        <button id="btnDark" class="btn btn-sm">
           <i class="bi bi-moon me-1"></i><span class="d-none d-sm-inline">Oscuro</span>
         </button>
+        <button id="cartBtn" class="btn cart-btn" title="Carrito de joyas">
+          <i class="bi bi-cart3 me-1"></i>
+          <span class="d-none d-sm-inline">Carrito</span>
+          <span id="cartCount" class="cart-count" style="display: none;">0</span>
+        </button>
+        <a href="index.html" class="back-btn">
+          <i class="bi bi-arrow-left"></i>
+          <span class="d-none d-sm-inline">Volver</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -621,7 +1143,11 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
+        <li class="breadcrumb-item">
+          <a href="index.html">
+            <i class="bi bi-house-door me-1"></i>Catálogo
+          </a>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">Producto</li>
       </ol>
     </nav>
@@ -629,7 +1155,7 @@
     <!-- Loader -->
     <div id="loader">
       <div class="loader-spinner"></div>
-      <div class="loader-text">Cargando producto...</div>
+      <div class="loader-text">Cargando joya...</div>
     </div>
 
     <!-- Contenido del producto -->
@@ -639,43 +1165,234 @@
   <!-- Footer -->
   <footer>
     <div class="container text-center">
-      <p class="mb-2">&copy; 2025 Amber Joyería | Todos los derechos reservados</p>
-      <p class="mb-0">
-        <i class="bi bi-geo-alt"></i> Santa Cruz, Bolivia | 
-        <i class="bi bi-telephone"></i> +591 70000000 | 
-        <i class="bi bi-whatsapp"></i> <a href="https://wa.me/59163488086">WhatsApp</a>
+      <p class="mb-1">
+        <strong>Amber Joyería</strong> - Joyas exclusivas de la más alta calidad
+      </p>
+      <p class="mb-0 small">
+        <i class="bi bi-geo-alt me-1"></i>Santa Cruz, Bolivia |
+        <i class="bi bi-telephone me-1"></i><a href="tel:+59163488086">+591 63488086</a> |
+        <i class="bi bi-whatsapp me-1"></i><a href="https://wa.me/59163488086">WhatsApp</a>
       </p>
     </div>
   </footer>
 
-  <!-- Modal para imagen ampliada -->
+  <!-- Modal para imagen -->
   <div class="modal fade" id="modalImagen" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body">
-          <img id="modalImagenSrc" src="" class="w-100" alt="">
+        <div class="modal-body p-0">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" style="z-index: 10;"></button>
+          <img id="modalImagenSrc" src="" alt="">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Botón flotante de regreso -->
-  <a href="index.html" class="back-btn btn btn-primary d-none" id="backBtn" title="Volver al catálogo">
-    <i class="bi bi-arrow-left"></i>
-  </a>
-
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Variables globales
     let productoActual = null;
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const numeroWhatsApp = '59163488086';
 
-    // Dark mode toggle - SE SINCRONIZA AUTOMÁTICAMENTE CON EL INDEX
+    // Funciones de utilidad
+    function parsePrice(priceStr) {
+      if (typeof priceStr === 'number') return priceStr;
+      if (typeof priceStr === 'string') {
+        return parseFloat(priceStr.replace(',', '.').replace(/[^\d.]/g, ''));
+      }
+      return 0;
+    }
+
+    function formatPrice(price) {
+      const numPrice = parsePrice(price);
+      return numPrice % 1 === 0 ? numPrice.toString() : numPrice.toFixed(2);
+    }
+
+    // Funciones del carrito
+    function updateCartUI() {
+      const cartCount = document.getElementById('cartCount');
+      
+      if (carrito.length > 0) {
+        cartCount.style.display = 'flex';
+        cartCount.textContent = carrito.reduce((sum, item) => sum + item.quantity, 0);
+      } else {
+        cartCount.style.display = 'none';
+      }
+    }
+
+    function addToCart(producto) {
+      const existingItem = carrito.find(item => item.id === producto.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        carrito.push({
+          ...producto,
+          quantity: 1
+        });
+      }
+      
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      updateCartUI();
+      renderCartItems();
+      showToast(`${producto.nombre} agregado al carrito`, 'success');
+    }
+
+    function removeFromCart(productId) {
+      carrito = carrito.filter(item => item.id !== productId);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      updateCartUI();
+      renderCartItems();
+    }
+
+    function updateQuantity(productId, change) {
+      const item = carrito.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(productId);
+        } else {
+          localStorage.setItem('carrito', JSON.stringify(carrito));
+          updateCartUI();
+          renderCartItems();
+        }
+      }
+    }
+
+    function renderCartItems() {
+      const cartItems = document.getElementById('cartItems');
+      const cartFooter = document.getElementById('cartFooter');
+      const cartTotal = document.getElementById('cartTotal');
+      
+      if (carrito.length === 0) {
+        cartItems.innerHTML = `
+          <div class="cart-empty">
+            <i class="bi bi-cart-x"></i>
+            <h5>Carrito vacío</h5>
+            <p>Agrega joyas para comenzar tu pedido</p>
+          </div>`;
+        cartFooter.style.display = 'none';
+        return;
+      }
+      
+      cartFooter.style.display = 'block';
+      
+      let total = 0;
+      cartItems.innerHTML = carrito.map(item => {
+        const itemPrice = parsePrice(item.precio);
+        const subtotal = itemPrice * item.quantity;
+        total += subtotal;
+        return `
+          <div class="cart-item">
+            <img src="${item.imagen}" alt="${item.nombre}" onerror="this.src='https://via.placeholder.com/50x50/003087/ffffff?text=Joya'">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.nombre}</div>
+              <div class="cart-item-code">Código: ${item.codigo}</div>
+              <div class="cart-item-price">${formatPrice(item.precio)} Bs</div>
+            </div>
+            <div class="cart-item-controls">
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+              <span class="quantity">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+              <button class="remove-item" onclick="removeFromCart(${item.id})">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>`;
+      }).join('');
+      
+      cartTotal.textContent = `${formatPrice(total)} Bs`;
+    }
+
+    function clearCart() {
+      carrito = [];
+      localStorage.removeItem('carrito');
+      updateCartUI();
+      renderCartItems();
+    }
+
+    // WhatsApp message generators
+    function generateWhatsAppMessage() {
+      if (carrito.length === 0) return '';
+      
+      let message = `*PEDIDO AMBER BOLIVIA* ✨%0A%0A*PRODUCTOS:*%0A`;
+      
+      let total = 0;
+      carrito.forEach((item, index) => {
+        const itemPrice = parsePrice(item.precio);
+        const subtotal = itemPrice * item.quantity;
+        total += subtotal;
+        message += `${index + 1}. ${item.nombre}%0A`;
+        message += `   Código: ${item.codigo}%0A`;
+        message += `   Cantidad: ${item.quantity} | Precio: ${formatPrice(item.precio)} Bs%0A`;
+        message += `   Subtotal: ${formatPrice(subtotal)} Bs%0A%0A`;
+      });
+      
+      message += `*TOTAL: ${formatPrice(total)} Bs*%0A%0A`;
+      message += `Necesito información sobre:%0A`;
+      message += `• Disponibilidad%0A`;
+      message += `• Formas de pago%0A`;
+      message += `• Tiempo de entrega%0A%0A`;
+      message += `Gracias! 😊`;
+      
+      return message;
+    }
+
+    function showToast(message, type = 'info') {
+      const toast = document.createElement('div');
+      toast.className = `alert alert-${type === 'success' ? 'success' : 'info'} position-fixed fade-in`;
+      toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 280px; opacity: 0.95; max-width: 90vw;';
+      toast.innerHTML = `
+        <i class="bi bi-check-circle me-2"></i>${message}
+        <button type="button" class="btn-close ms-2" onclick="this.parentElement.remove()"></button>
+      `;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.style.animation = 'slideInRight 0.3s ease reverse';
+          setTimeout(() => toast.remove(), 300);
+        }
+      }, 3000);
+    }
+
+    // Event listeners para carrito
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      document.getElementById('cartSidebar').classList.add('active');
+      document.getElementById('cartOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    document.getElementById('cartClose').addEventListener('click', () => {
+      document.getElementById('cartSidebar').classList.remove('active');
+      document.getElementById('cartOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    document.getElementById('cartOverlay').addEventListener('click', () => {
+      document.getElementById('cartSidebar').classList.remove('active');
+      document.getElementById('cartOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      const message = generateWhatsAppMessage();
+      if (message) {
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${message}`, '_blank');
+        clearCart();
+        document.getElementById('cartSidebar').classList.remove('active');
+        document.getElementById('cartOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+        showToast('Pedido enviado! El carrito se ha limpiado.', 'success');
+      }
+    });
+
+    // Dark mode
     const btnDark = document.getElementById('btnDark');
     const isDarkStored = localStorage.getItem('darkMode') === 'true';
     
-    // Aplicar tema guardado al cargar (sincronizado con index.html)
     if (isDarkStored) {
       document.body.classList.add('dark');
       document.querySelector('.navbar').classList.add('dark-mode');
@@ -686,10 +1403,8 @@
       const isDark = document.body.classList.toggle('dark');
       document.querySelector('.navbar').classList.toggle('dark-mode');
       
-      // Guardar preferencia (se sincroniza con index.html)
       localStorage.setItem('darkMode', isDark);
       
-      // Cambiar texto e icono
       if (isDark) {
         btnDark.innerHTML = '<i class="bi bi-sun me-1"></i><span class="d-none d-sm-inline">Claro</span>';
       } else {
@@ -697,60 +1412,8 @@
       }
     });
 
-    // Obtener parámetro ID de la URL
-    function getParam(name) {
-      const url = new URL(location.href);
-      return url.searchParams.get(name);
-    }
-
-    // Función para obtener icono de categoría
-    function getCategoryIcon(categoria) {
-      const iconos = {
-        'Anillos': 'circle',
-        'Cadenas': 'link-45deg', 
-        'Colgantes': 'heart',
-        'Pendientes': 'earrings',
-        'Pulseras': 'watch',
-        'Broches': 'pin-angle'
-      };
-      return iconos[categoria] || 'gem';
-    }
-
-    // Función para obtener icono de material
-    function getMaterialIcon(material) {
-      const iconos = {
-        'Oro': 'sun',
-        'Plata': 'moon', 
-        'Oro Blanco': 'snow',
-        'Oro Rosa': 'sunrise',
-        'Platino': 'stars'
-      };
-      return iconos[material] || 'stars';
-    }
-
-    // Función para crear link de WhatsApp
-    function crearWhatsappLink(producto) {
-      const mensaje = `*SOLICITUD DE JOYA - AMBER JOYERÍA* %0A%0A` +
-                     `📋 *DATOS DEL PRODUCTO:*%0A` +
-                     `• Nombre: ${encodeURIComponent(producto.nombre)}%0A` +
-                     `• Código: ${producto.codigo}%0A` +
-                     `• Precio: ${producto.precio} ${producto.moneda}%0A` +
-                     `• Material: ${encodeURIComponent(producto.material)}%0A` +
-                     `• Categoría: ${encodeURIComponent(producto.categoria)}%0A%0A` +
-                     `🛍️ *SOLICITO:*%0A` +
-                     `• Información adicional%0A` +
-                     `• Disponibilidad%0A` +
-                     `• Formas de pago%0A` +
-                     `• Opciones de entrega%0A%0A` +
-                     `*UBICACIÓN:* Santa Cruz, Bolivia%0A%0A` +
-                     `Espero su pronta respuesta. ¡Gracias!`;
-      
-      return `https://wa.me/59163488086?text=${mensaje}`;
-    }
-
-    // Función para abrir modal de imagen - FUNCIONALIDAD PRINCIPAL
+    // Función para abrir modal de imagen
     function abrirModalImagen(src, alt) {
-      console.log('Abriendo modal con:', src, alt); // Debug
       const modalImg = document.getElementById('modalImagenSrc');
       const modal = document.getElementById('modalImagen');
       
@@ -762,118 +1425,116 @@
       }
     }
 
-    // Función para añadir meta tags dinámicos para SEO
-    function addMetaTags(producto) {
-      // Meta description
-      let metaDescription = document.querySelector('meta[name="description"]');
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta');
-        metaDescription.name = 'description';
-        document.head.appendChild(metaDescription);
-      }
-      metaDescription.content = `${producto.nombre} - ${producto.descripcion} Precio: ${producto.precio} ${producto.moneda}. Amber Joyería, Santa Cruz, Bolivia.`;
-
-      // Open Graph tags
-      const ogTags = [
-        { property: 'og:title', content: `${producto.nombre} - Amber Joyería` },
-        { property: 'og:description', content: producto.descripcion },
-        { property: 'og:image', content: window.location.origin + '/' + producto.imagen },
-        { property: 'og:url', content: window.location.href },
-        { property: 'og:type', content: 'product' }
-      ];
-
-      ogTags.forEach(tag => {
-        let existingTag = document.querySelector(`meta[property="${tag.property}"]`);
-        if (!existingTag) {
-          existingTag = document.createElement('meta');
-          existingTag.setAttribute('property', tag.property);
-          document.head.appendChild(existingTag);
-        }
-        existingTag.content = tag.content;
-      });
+    // Función para crear mensaje de WhatsApp individual
+    function crearMensajeWhatsApp(producto) {
+      let message = `*CONSULTA PRODUCTO AMBER* ✨%0A%0A*PRODUCTO:*%0A`;
+      message += `${producto.nombre}%0A`;
+      message += `Código: ${producto.codigo}%0A`;
+      message += `Precio: ${formatPrice(producto.precio)} Bs%0A%0A`;
+      message += `Necesito información sobre:%0A`;
+      message += `• Disponibilidad%0A`;
+      message += `• Detalles del producto%0A`;
+      message += `• Formas de pago%0A%0A`;
+      message += `Gracias! 😊`;
+      
+      return message;
     }
 
     // Función principal para mostrar producto
     function mostrarProducto(producto) {
-      productoActual = producto; // Guardar referencia global
+      productoActual = producto;
       
-      // Actualizar título de la página
       document.title = `${producto.nombre} - Amber Joyería`;
       
-      // Actualizar breadcrumb
       const breadcrumb = document.querySelector('.breadcrumb');
       breadcrumb.innerHTML = `
-        <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
-        <li class="breadcrumb-item"><a href="index.html">${producto.categoria}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">${producto.nombre}</li>
+        <li class="breadcrumb-item">
+          <a href="index.html">
+            <i class="bi bi-house-door me-1"></i>Catálogo
+          </a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="index.html#${producto.categoria}">${producto.categoria}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">${producto.nombre.length > 30 ? producto.nombre.substring(0, 30) + '...' : producto.nombre}</li>
       `;
 
-      // Agregar meta tags para SEO
-      addMetaTags(producto);
+      const mensajeWhatsApp = crearMensajeWhatsApp(producto);
 
-      // Crear HTML del producto
       const html = `
         <div class="producto-container fade-in">
-          <div class="row g-4 align-items-start">
+          <div class="row g-4">
             <div class="col-12 col-lg-6">
-              <div class="img-container">
-                <img src="${producto.imagen}" 
-                     alt="${producto.nombre}" 
-                     class="producto-img"
-                     id="imagenProducto"
-                     loading="lazy">
+              <div class="text-center">
+                <div class="producto-img-container">
+                  <div class="categoria-badge-img">${producto.categoria}</div>
+                  <div class="codigo-producto-img">${producto.codigo}</div>
+                  <img src="${producto.imagen}" 
+                       alt="${producto.nombre}" 
+                       class="producto-img"
+                       id="imagenProducto"
+                       loading="lazy"
+                       onerror="this.src='https://via.placeholder.com/400x400/003087/ffffff?text=Amber+Joyería'">
+                </div>
               </div>
             </div>
             
             <div class="col-12 col-lg-6">
               <h1 class="producto-titulo">${producto.nombre}</h1>
               
-              <div class="producto-codigo">
-                <i class="bi bi-tag me-2"></i>Código: ${producto.codigo}
-              </div>
-              
-              <div class="mb-3">
-                <span class="producto-categoria">
-                  <i class="bi bi-${getCategoryIcon(producto.categoria)}"></i>
-                  ${producto.categoria}
-                </span>
-                <span class="producto-material">
-                  <i class="bi bi-${getMaterialIcon(producto.material)}"></i>
-                  ${producto.material}
-                </span>
-              </div>
-              
               <div class="precio">
                 <span class="flag">🇧🇴</span>
-                ${producto.precio} ${producto.moneda}
+                <span class="precio-valor">${formatPrice(producto.precio)} Bs</span>
               </div>
               
-              <div class="descripcion">
-                <i class="bi bi-info-circle me-2"></i>
-                ${producto.descripcion}
+              <div class="descripcion-simple">
+                <h6>
+                  <i class="bi bi-info-circle"></i>
+                  Descripción
+                </h6>
+                <p>${producto.descripcion || 'Joya exclusiva de alta calidad, diseñada para realzar tu elegancia natural.'}</p>
               </div>
+              
+              ${producto.caracteristicas && producto.caracteristicas.length > 0 ? `
+              <div class="caracteristicas-simple">
+                <h6>
+                  <i class="bi bi-gem"></i>
+                  Características
+                </h6>
+                <ul>
+                  ${producto.caracteristicas.map(caracteristica => `<li><i class="bi bi-check"></i>${caracteristica}</li>`).join('')}
+                </ul>
+              </div>` : ''}
               
               <div class="d-grid gap-3 mt-4">
-                <a href="${crearWhatsappLink(producto)}" 
-                   target="_blank" 
-                   class="btn btn-success btn-lg"
-                   id="btnWhatsApp">
-                  <i class="bi bi-whatsapp me-2"></i>
-                  Pedir por WhatsApp
-                </a>
+                <div class="row g-2">
+                  <div class="col">
+                    <button onclick="addToCart(${JSON.stringify(producto).replace(/"/g, '&quot;')})" 
+                            class="btn btn-cart w-100">
+                      <i class="bi bi-cart-plus me-2"></i>Agregar al Carrito
+                    </button>
+                  </div>
+                  <div class="col">
+                    <a href="https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}" 
+                       target="_blank" 
+                       class="btn btn-success w-100">
+                      <i class="bi bi-whatsapp me-2"></i>Consultar Joya
+                    </a>
+                  </div>
+                </div>
                 
                 <div class="row g-2">
                   <div class="col">
-                    <a href="index.html" class="btn btn-outline-secondary w-100">
-                      <i class="bi bi-arrow-left me-2"></i>Catálogo
-                    </a>
+                    <button type="button" 
+                            class="btn btn-outline-primary w-100"
+                            id="btnAmpliar">
+                      <i class="bi bi-zoom-in me-1"></i>Ampliar Imagen
+                    </button>
                   </div>
                   <div class="col">
-                    <button type="button" 
-                            class="btn btn-primary w-100"
-                            id="btnAmpliar">
-                      <i class="bi bi-zoom-in me-2"></i>Ampliar
-                    </button>
+                    <a href="index.html" class="btn btn-outline-secondary w-100">
+                      <i class="bi bi-arrow-left me-1"></i>Ver Catálogo
+                    </a>
                   </div>
                 </div>
               </div>
@@ -881,52 +1542,51 @@
           </div>
         </div>
 
-        <div class="caracteristicas fade-in" style="animation-delay: 0.2s;">
-          <h5><i class="bi bi-list-check"></i>Características del Producto</h5>
-          <div class="caracteristica-item">
-            <i class="bi bi-gem"></i>
-            <div>
-              <strong>Categoría:</strong> ${producto.categoria}
+        <div class="info-adicional fade-in" style="animation-delay: 0.2s;">
+          <h6><i class="bi bi-info-circle"></i>Información de la Joya</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-item">
+                <i class="bi bi-tag"></i>
+                <div><strong>Código:</strong> ${producto.codigo}</div>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-gem"></i>
+                <div><strong>Categoría:</strong> ${producto.categoria}</div>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-currency-dollar"></i>
+                <div><strong>Precio:</strong> ${formatPrice(producto.precio)} Bs</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-item">
+                <i class="bi bi-geo-alt"></i>
+                <div><strong>Ubicación:</strong> Santa Cruz, Bolivia</div>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-shield-check"></i>
+                <div><strong>Calidad:</strong> Joyería Premium</div>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-eye"></i>
+                <div><strong>Disponible:</strong> Para ver en tienda</div>
+              </div>
             </div>
           </div>
-          <div class="caracteristica-item">
-            <i class="bi bi-stars"></i>
-            <div>
-              <strong>Material:</strong> ${producto.material}
-            </div>
-          </div>
-          <div class="caracteristica-item">
-            <i class="bi bi-tag"></i>
-            <div>
-              <strong>Código:</strong> ${producto.codigo}
-            </div>
-          </div>
-          <div class="caracteristica-item">
-            <i class="bi bi-currency-dollar"></i>
-            <div>
-              <strong>Precio:</strong> ${producto.precio} ${producto.moneda} (Bolivianos)
-            </div>
-          </div>
-          <div class="caracteristica-item">
-            <i class="bi bi-geo-alt"></i>
-            <div>
-              <strong>Disponible en:</strong> Santa Cruz, Bolivia
-            </div>
-          </div>
-          <div class="caracteristica-item">
-            <i class="bi bi-shield-check"></i>
-            <div>
-              <strong>Garantía:</strong> Certificado de autenticidad incluido
-            </div>
-          </div>
+        </div>
+
+        <div class="text-center mt-4 fade-in" style="animation-delay: 0.3s;">
+          <a href="index.html" class="btn btn-primary btn-lg">
+            <i class="bi bi-arrow-left me-2"></i>Volver al Catálogo Completo
+          </a>
         </div>
       `;
       
       document.getElementById('contenido').innerHTML = html;
       
-      // ASIGNAR EVENTOS DESPUÉS DE CREAR EL HTML
+      // Eventos después de renderizar
       setTimeout(() => {
-        // Evento para imagen del producto
         const imagenProducto = document.getElementById('imagenProducto');
         if (imagenProducto) {
           imagenProducto.addEventListener('click', () => {
@@ -934,51 +1594,43 @@
           });
         }
         
-        // Evento para botón ampliar
         const btnAmpliar = document.getElementById('btnAmpliar');
         if (btnAmpliar) {
           btnAmpliar.addEventListener('click', () => {
             abrirModalImagen(producto.imagen, producto.nombre);
           });
         }
-        
-        // Verificar que el botón de WhatsApp tenga el link correcto
-        const btnWhatsApp = document.getElementById('btnWhatsApp');
-        if (btnWhatsApp) {
-          console.log('Botón WhatsApp configurado:', btnWhatsApp.href);
-        }
       }, 100);
     }
 
-    // INICIALIZAR LA APLICACIÓN
-    const productId = Number(getParam('id') || 0);
+    // Inicialización
+    const params = new URLSearchParams(location.search);
+    const id = Number(params.get('id') || 0);
 
-    if (!productId) {
+    if (!id) {
       setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
         document.getElementById('contenido').style.display = 'block';
         document.getElementById('contenido').innerHTML = `
-          <div class="error-container">
+          <div class="error-container fade-in">
             <i class="bi bi-exclamation-triangle"></i>
-            <h3>Producto no especificado</h3>
-            <p class="text-muted">No se ha proporcionado un ID de producto válido.</p>
+            <h3>Joya no especificada</h3>
+            <p class="text-muted">No se proporcionó un ID de joya válido.</p>
             <a href="index.html" class="btn btn-primary">
-              <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
+              <i class="bi bi-arrow-left me-2"></i>Volver al Catálogo
             </a>
           </div>
         `;
       }, 500);
     } else {
-      // Cargar producto
+      // Cargar producto desde JSON
       fetch('productos.json')
         .then(response => {
-          if (!response.ok) {
-            throw new Error('Error al cargar productos');
-          }
+          if (!response.ok) throw new Error('Archivo no encontrado');
           return response.json();
         })
         .then(productos => {
-          const producto = productos.find(p => p.id === productId);
+          const producto = productos.find(p => p.id === id);
           
           setTimeout(() => {
             document.getElementById('loader').style.display = 'none';
@@ -986,86 +1638,73 @@
             
             if (!producto) {
               document.getElementById('contenido').innerHTML = `
-                <div class="error-container">
+                <div class="error-container fade-in">
                   <i class="bi bi-search"></i>
-                  <h3>Producto no encontrado</h3>
-                  <p class="text-muted">El producto con ID ${productId} no existe en nuestro catálogo.</p>
-                  <a href="index.html" class="btn btn-primary">
-                    <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
-                  </a>
+                  <h3>Joya no encontrada</h3>
+                  <p class="text-muted">La joya con ID <strong>${id}</strong> no existe en nuestro catálogo.</p>
+                  <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <a href="index.html" class="btn btn-primary">
+                      <i class="bi bi-arrow-left me-2"></i>Ver Catálogo
+                    </a>
+                    <button onclick="location.reload()" class="btn btn-outline-primary">
+                      <i class="bi bi-arrow-clockwise me-2"></i>Reintentar
+                    </button>
+                  </div>
                 </div>
               `;
             } else {
               mostrarProducto(producto);
-              document.getElementById('backBtn').classList.remove('d-none');
             }
+            
+            updateCartUI();
+            renderCartItems();
           }, 800);
         })
         .catch(error => {
-          console.error('Error cargando productos:', error);
+          console.log('Error cargando productos:', error);
+          
           setTimeout(() => {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('contenido').style.display = 'block';
+            
             document.getElementById('contenido').innerHTML = `
-              <div class="error-container">
+              <div class="error-container fade-in">
                 <i class="bi bi-wifi-off"></i>
                 <h3>Error de conexión</h3>
-                <p class="text-muted">No se pudo cargar la información del producto. ${error.message}</p>
-                <button onclick="location.reload()" class="btn btn-primary me-2">
-                  <i class="bi bi-arrow-clockwise me-2"></i>Reintentar
-                </button>
-                <a href="index.html" class="btn btn-outline-secondary">
-                  <i class="bi bi-arrow-left me-2"></i>Volver al catálogo
-                </a>
+                <p class="text-muted">No se pudo cargar la información de la joya. Por favor, intenta nuevamente.</p>
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                  <button onclick="location.reload()" class="btn btn-primary">
+                    <i class="bi bi-arrow-clockwise me-2"></i>Reintentar
+                  </button>
+                  <a href="index.html" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Ir al Catálogo
+                  </a>
+                </div>
               </div>
             `;
-          }, 500);
+            
+            updateCartUI();
+            renderCartItems();
+          }, 800);
         });
     }
 
-    // Detectar scroll para efectos del botón flotante
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const backBtn = document.getElementById('backBtn');
-      
-      if (scrollTop > 300) {
-        backBtn.style.opacity = scrollTop > lastScrollTop ? '0.5' : '0.8';
-      } else {
-        backBtn.style.opacity = '0.7';
-      }
-      
-      lastScrollTop = scrollTop;
-    });
-
-    // Preloader para mejorar UX
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-
     // Manejo de errores de imagen
-    document.addEventListener('error', (e) => {
+    document.addEventListener('error', e => {
       if (e.target.tagName === 'IMG') {
-        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"%3E%3Crect width="300" height="300" fill="%23f8f9fa"/%3E%3Ctext x="50%" y="50%" dominant-baseline="central" text-anchor="middle" fill="%23adb5bd" font-family="Inter, sans-serif" font-size="16"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
-        e.target.alt = 'Imagen no disponible';
+        e.target.src = 'https://via.placeholder.com/400x400/003087/ffffff?text=Amber+Joyería';
       }
     }, true);
 
-    // Cerrar modal al hacer clic fuera de la imagen
-    document.getElementById('modalImagen').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        bootstrap.Modal.getInstance(e.target).hide();
-      }
-    });
+    // Hacer funciones globales disponibles
+    window.updateQuantity = updateQuantity;
+    window.removeFromCart = removeFromCart;
+    window.addToCart = addToCart;
 
-    // Tecla ESC para cerrar modal
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const modal = document.querySelector('.modal.show');
-        if (modal) {
-          bootstrap.Modal.getInstance(modal).hide();
-        }
-      }
+    // Inicializar carrito al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartUI();
+      renderCartItems();
     });
   </script>
 </body>
